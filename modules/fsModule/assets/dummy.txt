@@ -1,0 +1,1 @@
+By fs.open() method u can open the file for writing but u have to pass 'w' flag as parameter of this function otherwise it will only create the empty file
