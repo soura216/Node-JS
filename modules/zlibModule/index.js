@@ -1,8 +1,9 @@
+const fs = require('fs')
+const zlib = require('zlib');
+
 module.exports = class ZlibModule{
 
     listOfImages = ['a.png','b.jpg'];
-    fs = require('fs')
-    zlib = require('zlib');
 
     constructor(req,res){
         this.req = req;
@@ -11,9 +12,9 @@ module.exports = class ZlibModule{
 
     compressOperation(){
         this.listOfImages.forEach((value,index) => {
-            const readStream = this.fs.createReadStream(rootDirectory+'/modules/zlibModule/images/'+value);
-            const writeStream = this.fs.createWriteStream(rootDirectory+'/modules/zlibModule/'+value+'.gz');
-            const compress = this.zlib.createGzip()
+            const readStream = fs.createReadStream(rootDirectory+'/modules/zlibModule/images/'+value);
+            const writeStream = fs.createWriteStream(rootDirectory+'/modules/zlibModule/'+value+'.gz');
+            const compress = zlib.createGzip()
             readStream
                 .on('error',(error)=>{
                     this.res.end(`${error.path} path does't exist`)

@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 module.exports = class WritableStream{
 
     constructor(req,res){
@@ -6,7 +8,6 @@ module.exports = class WritableStream{
     }
 
     writeOperation(){
-        const fs = require('fs');
         const readableStream = fs.createReadStream(rootDirectory+'/README.md');
         const writableStream = fs.createWriteStream(rootDirectory+'/modules/writableStream/storage/dummy.txt');
         readableStream

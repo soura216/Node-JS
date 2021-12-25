@@ -1,8 +1,8 @@
+const events =  require('events');
+
 module.exports = class EventModule {
 
-    events =  require('events');
-    instaceOfEventEmitter = new this.events.EventEmitter()
-    
+    instaceOfEventEmitter = new events.EventEmitter();
 
     constructor(req,res){
         this.req = req;

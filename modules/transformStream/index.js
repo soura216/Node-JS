@@ -1,11 +1,13 @@
+const stream = require('stream');
+const fs = require('fs');
+
 module.exports = class TansformStream{
 
-    stream = require('stream');
+    instaceOfTransform  = new stream.Transform();
 
     constructor(req,res){
         this.req = req;
         this.res = res;
-        this.instaceOfTransform  = new this.stream.Transform();
         this.instaceOfTransform._transform = function (chunk,encoding,callback) {
             try{
                chunk = chunk.toString().replace(/#/g,"*");
@@ -16,8 +18,7 @@ module.exports = class TansformStream{
         }
     }
 
-    transformOperation(){
-        const fs = require('fs');
+    transformOperation(){        
         const readableStream = fs.createReadStream(rootDirectory+'/README.md');
         const writableStream = fs.createWriteStream(rootDirectory+'/modules/transformStream/storage/dummy.txt');
         readableStream

@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 module.exports = class ReadableStream {
 
     constructor(req,res){
@@ -6,7 +8,6 @@ module.exports = class ReadableStream {
     }
 
     readOperation(){
-        const fs = require('fs');
         const readableStream = fs.createReadStream(rootDirectory+'/README.md');
         readableStream.on("data",(chunk)=>{
             this.res.write(chunk)
